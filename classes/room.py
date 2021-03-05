@@ -12,3 +12,11 @@ class Room():
 
     def remove_guest_from_room(self, guest):
         self.guest_list.remove(guest)
+
+    def add_song_to_list(self, song):
+        self.song_list.append(song)
+
+    def remove_song_from_room(self, song_title):
+        for song in self.song_list:
+            if song["Title"] == song_title:
+                self.song_list.remove(song)

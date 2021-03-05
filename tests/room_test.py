@@ -42,3 +42,15 @@ class TestRoom(unittest.TestCase):
         self.room1.remove_guest_from_room(self.guest1.name)
         self.assertEqual(["Frank Booth"], self.room1.guest_list)
         # print(self.room1.guest_list)
+
+    def test_add_song_to_room(self):
+        new_song = {"Artist": "Rick Astley", "Title": "Never Gonna Give You Up"}
+        self.room1.add_song_to_list(new_song)
+        self.assertEqual("Never Gonna Give You Up", self.room1.song_list[2]["Title"])
+        # print(self.room1.song_list)
+
+    def test_remove_song_from_room(self):
+        self.room1.remove_song_from_room("Only Time")
+        self.assertEqual(1, len(self.room1.song_list))
+        self.assertEqual("Blue Velvet", self.room1.song_list[0]["Title"])
+        # print(self.room1.song_list)
