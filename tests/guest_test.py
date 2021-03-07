@@ -37,18 +37,18 @@ class TestGuest(unittest.TestCase):
     def test_guest_has_a_favourite_song(self):
         self.assertEqual("Blue Velvet", self.guest2.fav_title)
 
+    # test the customer paying the entry fee and passing money to room till
     def test_guest_pays_entry_fee(self):        
         self.guest1.pay_entry_fee(self.room1)
         self.assertEqual(250, self.guest1.wallet)
         self.assertEqual(50, self.room1.till)
         
+    # test weather the customer's favourite song is on the playlist    
     def test_guest_favourite_song_in_room(self):
         self.assertEqual("Hurray", self.guest1.favourite_song_in_room(self.room1))
         self.assertEqual("I don't like those songs", self.guest3.favourite_song_in_room(self.room1))
-        # print(self.guest1.favourite_song_in_room(self.room1))
-        # print(self.guest3.favourite_song_in_room(self.room1))
-        # print(self.room1.song_list)
 
+    # test customer buying drinks and passing the money to the room till
     def test_guest_buys_drink(self):
         self.guest1.buy_drink(self.room1, "Beer")
         self.guest2.buy_drink(self.room1, "Wine")
