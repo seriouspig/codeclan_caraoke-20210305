@@ -5,4 +5,5 @@ class Guest:
         self.fav_artist = fav_artist
         self.fav_title = fav_title
 
-        
+    def pay_entry_fee(self, room_fee):
+        self.wallet -= room_fee
