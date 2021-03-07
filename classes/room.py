@@ -8,6 +8,12 @@ class Room():
         self.guest_list = []
         self.entry_fee = 50
 
+        self.bar = [
+            {"Drink": "Beer", "Price":5},
+            {"Drink": "Wine", "Price":10},
+            {"Drink": "Vodka", "Price":15}
+        ]
+
     def add_guest_to_room(self, guest):
         if (self.room_capacity() == "Welcome") and (self.guest_can_afford_entry(guest) == True):
             self.guest_list.append(guest.name)

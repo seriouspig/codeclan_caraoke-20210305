@@ -8,6 +8,10 @@ class TestGuest(unittest.TestCase):
     def setUp(self):
         self.guest1 = Guest("John Wick", 300, "Enya", "Only Time")
         self.guest2 = Guest("Frank Booth", 1000, "Bobby Vinton" , "Blue Velvet")
+        self.guest3 = Guest("Hannibal Lecter", 30, "Angie Gold" , "Eat You Up")
+        self.guest4 = Guest("Michael Myers", 60, "Peter Murphy" , "Cuts You Up")
+        self.guest5 = Guest("Norman Bates", 150, "Pink Floyd" , "Mother")
+        self.guest6 = Guest("Rich Hannibal Lecter", 100, "Angie Gold" , "Eat You Up")
 
         song_list1 = [
             {"Artist": "Enya", "Title": "Only Time"},
@@ -34,6 +38,22 @@ class TestGuest(unittest.TestCase):
         self.assertEqual("Blue Velvet", self.guest2.fav_title)
 
     def test_guest_pays_entry_fee(self):        
-        self.guest1.pay_entry_fee(self.room1.entry_fee)
+        self.guest1.pay_entry_fee(self.room1)
         self.assertEqual(250, self.guest1.wallet)
+        self.assertEqual(50, self.room1.till)
         
+    def test_guest_favourite_song_in_room(self):
+        self.assertEqual("Hurray", self.guest1.favourite_song_in_room(self.room1))
+        self.assertEqual("I don't like those songs", self.guest3.favourite_song_in_room(self.room1))
+        # print(self.guest1.favourite_song_in_room(self.room1))
+        # print(self.guest3.favourite_song_in_room(self.room1))
+        # print(self.room1.song_list)
+
+    def test_guest_buys_drink(self):
+        self.guest1.buy_drink(self.room1, "Beer")
+        self.guest2.buy_drink(self.room1, "Wine")
+        self.guest3.buy_drink(self.room1, "Vodka")
+        self.assertEqual(295, self.guest1.wallet)
+        self.assertEqual(990, self.guest2.wallet)
+        self.assertEqual(15, self.guest3. wallet)
+        self.assertEqual(30, self.room1.till)
